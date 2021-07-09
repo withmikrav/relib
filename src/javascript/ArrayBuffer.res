@@ -7,4 +7,4 @@ type t
 @send external slice: (t, int, int) => t = "slice"
 @send external sliceToEnd: (t, int) => t = "slice"
 
-@send external isView: (t, 'any) => bool = "isView"
+@scope("ArrayBuffer") @val external isView: 'any => bool = "isView"
