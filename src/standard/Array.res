@@ -1,3 +1,6 @@
+@ocaml.doc(
+  "The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects."
+)
 type t<'a> = array<'a>
 
 @scope("Array") @val external fromIterator: Iterator.t<'a> => t<'a> = "from"
