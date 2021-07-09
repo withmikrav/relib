@@ -1,7 +1,7 @@
 type t
 
 @new external make: string => t = "URL"
-@new external makeWith: (string, ~base: string) => t = "URL"
+@new external makeWithBase: (string, ~base: string) => t = "URL"
 
 @send external toString: (t, unit) => string = "toString"
 @send external toJSON: (t, unit) => string = "toJSON"

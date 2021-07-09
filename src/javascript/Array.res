@@ -74,7 +74,7 @@ external indexOfFrom: (t<'a>, 'a, ~from: int) => int = "indexOf"
 external join: (t<'a>, unit) => string = "join"
 
 @ocaml.doc("Joins all elements of an array into a string.") @send
-external joinWithSeparator: (t<'a>, string) => string = "join"
+external joinWithSeparator: (t<'a>, ~separator: string) => string = "join"
 
 @ocaml.doc("Returns a `Iterator` that contains the keys for each index in the array.") @send
 external keys: t<'a> => Iterator.t<int> = "keys"
@@ -106,7 +106,7 @@ external mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b> = "map"
   "Creates a new array populated with the results of calling a provided function on every element in the calling array."
 )
 @send
-external mapWithIndexAndSource: (t<'a>, ('a, int, t<'a>) => 'b) => t<'b> = "map"
+external mapWithSource: (t<'a>, ('a, int, t<'a>) => 'b) => t<'b> = "map"
 
 @ocaml.doc("Removes the last element from an array and returns that element. 
   
@@ -138,7 +138,7 @@ external reduceWithIndex: (t<'a>, ('b, 'b, int) => 'b, 'b) => 'b = "reduce"
   "Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value."
 )
 @send
-external reduceWithIndexAndSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b) => 'b = "reduce"
+external reduceWithSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b) => 'b = "reduce"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value."
@@ -156,8 +156,7 @@ external reduceRightWithIndex: (t<'a>, ('b, 'b, int) => 'b, 'b) => 'b = "reduceR
   "Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value."
 )
 @send
-external reduceRightWithIndexAndSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b, 'b) => 'b =
-  "reduceRight"
+external reduceRightWithSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b, 'b) => 'b = "reduceRight"
 
 @ocaml.doc(
   "Reverses the order of the elements of an array in place. (First becomes the last, last becomes first.)"
@@ -190,7 +189,7 @@ external someWithIndex: (t<'a>, ('a, int) => bool) => bool = "some"
   "Returns `true` if at least one element in this array satisfies the provided testing function."
 )
 @send
-external someWithIndexAndSource: (t<'a>, ('a, int, t<'a>) => bool) => bool = "some"
+external someWithSource: (t<'a>, ('a, int, t<'a>) => bool) => bool = "some"
 
 @ocaml.doc("Sorts the elements of an array in place and returns the array.") @send
 external sort: (t<'a>, unit) => t<'a> = "sort"
@@ -210,7 +209,20 @@ external spliceInPlace: (t<'a>, ~start: int, ~count: int, ~item: 'a) => t<'a> = 
 @ocaml.doc("Replace and replacing elements from an array.") @send @variadic
 external spliceInPlaceMany: (t<'a>, ~start: int, ~count: int, ~items: array<'a>) => t<'a> = "splice"
 
-// toLocaleString
+@ocaml.doc("Returns a localized string representing the array and its elements.") @send
+external toLocaleString: (t<'a>, unit) => string = "toLocaleString"
+
+@ocaml.doc("Returns a localized string representing the array and its elements.") @send
+external toLocaleStringWithLocales: (t<'a>, string) => string = "toLocaleString"
+
+@ocaml.doc("Returns a localized string representing the array and its elements.") @send
+external toLocaleStringWithNumberOptions: (t<'a>, string, Intl.NumberFormat.optionsT) => string =
+  "toLocaleString"
+
+@ocaml.doc("Returns a localized string representing the array and its elements.") @send
+external toLocaleStringWitDateOptions: (t<'a>, string, Intl.DateFormat.optionsT) => string =
+  "toLocaleString"
+
 // toString
 
 @ocaml.doc("Adds an element to the front of an array, and returns the new length of the array.")

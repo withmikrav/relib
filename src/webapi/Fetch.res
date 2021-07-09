@@ -53,7 +53,7 @@ module Request = {
 
   type initT
   @obj
-  external init: (
+  external makeInit: (
     ~_method: HTTP.methodT=?,
     ~headers: Headers.t=?,
     ~body: Body.t=?,
@@ -67,7 +67,7 @@ module Request = {
   ) => initT = ""
 
   @new external make: string => t = "Request"
-  @new external makeWithInit: (string, initT) => t = "Request"
+  @new external makeWithInit: (string, ~init: initT) => t = "Request"
 
   @return(nullable) @get external body: t => option<'a> = "get"
 }

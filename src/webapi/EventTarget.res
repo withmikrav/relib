@@ -18,8 +18,11 @@ module Make = (
 
   @send external addEventListener: (t, eventTypeT => unit) => unit = "addEventListener"
   @send
-  external addEventListenerWithOptions: (t, eventTypeT => unit, addEventListenerOptionsT) => unit =
-    "addEventListener"
+  external addEventListenerWithOptions: (
+    t,
+    eventTypeT => unit,
+    ~options: addEventListenerOptionsT,
+  ) => unit = "addEventListener"
   @send
   external addEventListenerWithUseCapture: (t, eventTypeT => unit, bool) => unit =
     "addEventListener"

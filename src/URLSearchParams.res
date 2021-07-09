@@ -16,6 +16,3 @@ type t
 @send external sort: (t, unit) => unit = "sort"
 @send external toString: (t, unit) => string = "toString"
 @send external values: (t, unit) => Iterator.t<string> = "values"
-
-let a = make("?q=123")
-a->entries()->Js.Array.from->Js.log

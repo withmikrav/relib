@@ -1,6 +1,12 @@
 include XMLHttpRequestEventTarget
 
-type readyStateT = Unsent | Opened | HeadersReceived | Loading | Done
+type readyStateT =
+  | Unsent
+  | Opened
+  | HeadersReceived
+  | Loading
+  | Done
+
 type responseTypeT = [
   | @as("") #Default
   | @as("arraybuffer") #ArrayBuffer
@@ -9,6 +15,8 @@ type responseTypeT = [
   | @as("json") #Json
   | @as("text") #Text
 ]
+
+let a = Unsent
 
 @new external make: unit => t = "XMLHttpRequest"
 
@@ -57,5 +65,5 @@ external openWith: (
 
 @send external overrideMimeType: (t, string) => unit = "overrideMimeType"
 @send external send: (t, unit) => unit = "send"
-@send external sendWithBody: (t, 'a) => unit = "send"
+@send external sendWithBody: (t, ~body: 'a) => unit = "send"
 @send external setRequestHeader: (t, string, string) => unit = "setRequestHeader"

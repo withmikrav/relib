@@ -9,7 +9,7 @@ include Iterator.Make({
 external return: (t<'value>, unit) => returnT<'value> = "return"
 
 @ocaml.doc("Returns the given value and finishes the generator.") @send
-external returnWith: (t<'value>, 'value) => returnT<'value> = "return"
+external returnWithValue: (t<'value>, ~value: 'value) => returnT<'value> = "return"
 
 @ocaml.doc(
   "Throws an error to a generator (also finishes the generator, unless caught from within that generator)."

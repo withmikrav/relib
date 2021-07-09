@@ -78,7 +78,7 @@ external options: (
 ) => optionsT = ""
 
 @scope("Intl") @new external make: string => t = "NumberFormat"
-@scope("Intl") @new external makeWithOptions: (string, optionsT) => t = "NumberFormat"
+@scope("Intl") @new external makeWithOptions: (string, ~options: optionsT) => t = "NumberFormat"
 
 @scope("Intl.NumberFormat") @val
 external supportedLocalesOf: array<string> => array<string> = "supportedLocalesOf"

@@ -24,7 +24,7 @@ Has the value `true` if the iterator has completed its sequence. In this case, `
   external next: (t<'value>, unit) => returnT<'value> = "next"
 
   @ocaml.doc("Returns a value yielded by the yield expression.") @send
-  external nextWith: (t<'value>, 'value) => returnT<'value> = "next"
+  external nextWithValue: (t<'value>, ~value: 'value) => returnT<'value> = "next"
 }
 
 include Make({
