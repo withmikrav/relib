@@ -1,21 +1,21 @@
 type t
 
-@new external makeInt: int => t = "Number"
-@new external makeFloat: float => t = "Number"
+@new external fromInt: int => t = "Number"
+@new external fromFloat: float => t = "Number"
 
-external unsafeToInt: t => int = "%identity"
-external unsafeToFloat: t => float = "%identity"
+external unsafe_toInt: t => int = "%identity"
+external unsafe_toFloat: t => float = "%identity"
 
 // Static properties
 
 @ocaml.doc("The smallest interval between two representable numbers.") @scope("Number") @val
-external _EPSILON: float = "EPSILON"
+external _EPSILON: t = "EPSILON"
 
 @ocaml.doc("The maximum safe integer in JavaScript `(2^53 - 1)`.") @scope("Number") @val
-external _MAX_SAFE_INTEGER: int = "MAX_SAFE_INTEGER"
+external _MAX_SAFE_INTEGER: t = "MAX_SAFE_INTEGER"
 
 @ocaml.doc("The largest positive representable number.") @scope("Number") @val
-external _MAX_VALUE: float = "MAX_VALUE"
+external _MAX_VALUE: t = "MAX_VALUE"
 
 @ocaml.doc("The minimum safe integer in JavaScript `(-(2^53 - 1))`.") @scope("Number") @val
 external _MIN_SAFE_INTEGER: t = "MIN_SAFE_INTEGER"
@@ -41,20 +41,20 @@ external _POSITIVE_INFINITY: t = "POSITIVE_INFINITY"
 // Static methods
 
 @ocaml.doc("Determine whether the passed value is `NaN`.") @scope("Number") @val
-external isNaN: unit => bool = "isNaN"
+external isNaN: 'a => bool = "isNaN"
 
 @ocaml.doc("Determine whether the passed value is a finite number.") @scope("Number") @val
-external isFinite: unit => bool = "isFinite"
+external isFinite: 'a => bool = "isFinite"
 
 @ocaml.doc("Determine whether the passed value is an integer.") @scope("Number") @val
-external isInteger: unit => bool = "isInteger"
+external isInteger: 'a => bool = "isInteger"
 
 @ocaml.doc(
   "Determine whether the passed value is a safe integer (number between `-(2^53 - 1)` and `2^53 - 1`)."
 )
 @scope("Number")
 @val
-external isSafeInteger: unit => bool = "isSafeInteger"
+external isSafeInteger: 'a => bool = "isSafeInteger"
 
 @scope("Number") @val external parseFloat: string => float = "parseFloat"
 
