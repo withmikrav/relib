@@ -52,3 +52,30 @@ external isInteger: (t, unit) => bool = "isInteger"
 )
 @send
 external isSafeInteger: (t, unit) => bool = "isSafeInteger"
+
+@scope("Number") @val external parseFloat: string => float = "parseFloat"
+
+@scope("Number") @val external parseInt: string => int = "parseInt"
+@scope("Number") @val external parseIntWithRadix: (string, int) => int = "parseInt"
+
+@ocaml.doc("Returns a string representing the number in exponential notation.") @send
+external toExponential: (t, unit) => string = "toExponential"
+
+@ocaml.doc("Returns a string representing the number in exponential notation.") @send
+external toExponentialWithFractionDigits: (t, int) => string = "toExponential"
+
+@ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
+external toFixed: (t, unit) => string = "toFixed"
+
+@ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
+external toFixedWithDigits: (t, int) => string = "toFixed"
+
+@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+external toLocaleString: (t, unit) => string = "toLocaleString"
+
+@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+external toLocaleStringWithLocales: (t, string) => string = "toLocaleString"
+
+@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+external toLocaleStringWithLocalesAndOptions: (t, string, Intl__NumberFormat.optionsT) => string =
+  "toLocaleString"

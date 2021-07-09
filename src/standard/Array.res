@@ -112,7 +112,7 @@ external mapWithIndexAndSource: (t<'a>, ('a, int, t<'a>) => 'b) => t<'b> = "map"
   
 Return the removed element from the array")
 @send
-external pop: (t<'a>, unit) => option<'a> = "pop"
+external pop: (t<'a>, unit) => Option.t<'a> = "pop"
 
 @ocaml.doc("Adds an element to the end of an array, and returns the new length of the array.") @send
 external push: (t<'a>, 'a) => int = "push"
@@ -166,7 +166,7 @@ external reduceRightWithIndexAndSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b, 'b) 
 external reverse: (t<'a>, unit) => t<'a> = "reverse"
 
 @ocaml.doc("Removes the first element from an array and returns that element.") @send
-external shift: (t<'a>, unit) => option<'a> = "shift"
+external shift: (t<'a>, unit) => Option.t<'a> = "shift"
 
 @ocaml.doc("Extracts a section of the calling array and returns a new array.") @send
 external slice: (t<'a>, ~start: int, ~end: int) => t<'a> = "slice"
