@@ -1,7 +1,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
 // https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es2015_generator_d_.generator.html
 
-include Iterator.Make({
+include Iterator.Impl({
   type t<'a> = Js.Array2.array_like<'a>
 })
 

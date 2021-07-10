@@ -1,4 +1,16 @@
-include XMLHttpRequestEventTarget
+include XMLHttpRequestEventTarget.Impl({
+  type t
+})
+
+module Response = {
+  type t
+
+  external unsafe_toBlob: t => Blob.t = "%identity"
+  external unsafe_toArrayBuffer: t => ArrayBuffer.t = "%identity"
+  external unsafe_toDocument: t => Document.t = "%identity"
+  external unsafe_toString: t => string = "%identity"
+  external unsafe_toJson: t => Json.t = "%identity"
+}
 
 type readyStateT =
   | Unsent
@@ -16,8 +28,6 @@ type responseTypeT = [
   | @as("text") #Text
 ]
 
-let a = Unsent
-
 @new external make: unit => t = "XMLHttpRequest"
 
 // Properties
@@ -25,14 +35,14 @@ let a = Unsent
 @set external onReadyStateChange: (t, unit => unit) => unit = "onreadystatechange"
 
 @get external readyState: t => readyStateT = "readyState"
-@get external response: t => 'any = "response"
-@get external responseText: t => string = "responseText"
+@get external response: t => Response.t = "response"
+@return(nullable) @get external responseText: t => option<string> = "responseText"
 
 @get external responseType: t => responseTypeT = "responseType"
 @set external setResponseType: (t, responseTypeT) => unit = "responseType"
 
-@get external responseURL: t => string = "responseURL"
-@get external responseXML: t => 'document = "responseXML"
+@return(nullable) @get external responseURL: t => option<string> = "responseURL"
+@return(nullable) @get external responseXML: t => option<Document.t> = "responseXML"
 @get external status: t => int = "status"
 @get external statusText: t => string = "statusText"
 

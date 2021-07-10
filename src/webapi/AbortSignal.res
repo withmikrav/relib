@@ -1,4 +1,4 @@
-include EventTarget.Make({
+include EventTarget.Impl({
   type t
   type eventTypeT = [
     | @as("abort") #Abort

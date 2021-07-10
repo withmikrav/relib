@@ -1,7 +1,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol
 // https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es2015_iterable_d_.iterator.html
 
-module Make = (
+module Impl = (
   T: {
     type t<'a>
   },
@@ -27,6 +27,6 @@ Has the value `true` if the iterator has completed its sequence. In this case, `
   external nextWithValue: (t<'value>, ~value: 'value) => returnT<'value> = "next"
 }
 
-include Make({
+include Impl({
   type t<'a> = Js.Array2.array_like<'a>
 })

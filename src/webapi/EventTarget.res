@@ -1,4 +1,4 @@
-module Make = (
+module Impl = (
   T: {
     type t
     type eventTypeT
