@@ -1,6 +1,19 @@
+// https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+// https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.xmlhttprequest.html
+
 include XMLHttpRequestEventTarget.Impl({
   type t
 })
+
+module Body = {
+  type t
+
+  external fromBlob: Blob.t => t = "%identity"
+  external fromArrayBuffer: ArrayBuffer.t => t = "%identity"
+  external fromFormData: FormData.t => t = "%identity"
+  external fromURLSearchParams: URLSearchParams.t => t = "%identity"
+  external fromString: string => t = "%identity"
+}
 
 module Response = {
   type t
@@ -75,5 +88,5 @@ external openWith: (
 
 @send external overrideMimeType: (t, string) => unit = "overrideMimeType"
 @send external send: (t, unit) => unit = "send"
-@send external sendWithBody: (t, ~body: 'a) => unit = "send"
+@send external sendWithBody: (t, ~body: Body.t) => unit = "send"
 @send external setRequestHeader: (t, string, string) => unit = "setRequestHeader"
