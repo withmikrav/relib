@@ -1,4 +1,5 @@
 @new external make: 'any => {..} = "Object"
+@new external makeEmpty: unit => {..} = "Object"
 
 // Static methods
 
