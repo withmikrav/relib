@@ -7,9 +7,13 @@ module Make = (
   type t = T.t
   type eventTypeT = T.eventTypeT
 
-  type addEventListenerOptionsT
+  type addEventListenerOptionsT = {
+    capture: option<bool>,
+    once: option<bool>,
+    passive: option<bool>,
+  }
   @obj
-  external addEventListenerOptions: (
+  external makeAddEventListenerOptions: (
     ~capture: bool=?,
     ~once: bool=?,
     ~passive: bool=?,
@@ -29,9 +33,10 @@ module Make = (
 
   //
 
-  type removeEventListenerOptionsT
+  type removeEventListenerOptionsT = {capture: option<bool>}
   @obj
-  external removeEventListenerOptions: (~capture: bool=?, unit) => removeEventListenerOptionsT = ""
+  external makeRemoveEventListenerOptions: (~capture: bool=?, unit) => removeEventListenerOptionsT =
+    ""
 
   @send external removeEventListener: (t, eventTypeT => unit) => unit = "removeEventListener"
   @send

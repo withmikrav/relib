@@ -2,79 +2,117 @@
 
 type t
 
-type optionsT
+type compactDisplayT = [@as("short") #Short | @as("long") #Long]
+
+type currencyDisplayT = [
+  | @as("symbol") #Symbol
+  | @as("narrowSymbol") #NarrowSymbol
+  | @as("code") #Code
+  | @as("name") #Name
+]
+
+type currencySignT = [
+  | @as("standard") #Standard
+  | @as("accounting") #Accounting
+]
+
+type localeMatcherT = [
+  | @as("lookup") #Lookup
+  | @as("best fit") #BestFit
+]
+
+type notationT = [
+  | @as("standard") #Standard
+  | @as("scientific") #Scientific
+  | @as("engineering") #Engineering
+  | @as("compact") #Compact
+]
+
+type numberingSystemT = [
+  | @as("arab") #Arab
+  | @as("arabext") #Arabext
+  | @as("bali") #Bali
+  | @as("beng") #Beng
+  | @as("deva") #Deva
+  | @as("fullwide") #Fullwide
+  | @as("gujr") #Gujr
+  | @as("guru") #Guru
+  | @as("hanidec") #Hanidec
+  | @as("khmr") #Khmr
+  | @as("knda") #Knda
+  | @as("laoo") #Laoo
+  | @as("latn") #Latn
+  | @as("limb") #Limb
+  | @as("mlym") #Mlym
+  | @as("mong") #Mong
+  | @as("mymr") #Mymr
+  | @as("orya") #Orya
+  | @as("tamldec") #Tamldec
+  | @as("telu") #Telu
+  | @as("thai") #Thai
+  | @as("tibt") #Tibt
+]
+
+type signDisplayT = [
+  | @as("auto") #Auto
+  | @as("never") #Never
+  | @as("always") #Always
+  | @as("exceptZero") #ExceptZero
+]
+
+type styleT = [
+  | @as("decimal") #Decimal
+  | @as("currency") #Currency
+  | @as("percent") #Percent
+  | @as("unit") #Unit
+]
+
+type unitDisplayT = [
+  | @as("long") #Long
+  | @as("short") #Short
+  | @as("narrow") #Narrow
+]
+
+type optionsT = {
+  compactDisplay: option<compactDisplayT>,
+  currency: option<string>,
+  currencyDisplay: option<currencyDisplayT>,
+  currencySign: option<currencySignT>,
+  localeMatcher: option<localeMatcherT>,
+  notation: option<notationT>,
+  numberingSystem: option<numberingSystemT>,
+  signDisplay: option<signDisplayT>,
+  style: option<styleT>,
+  unit: option<string>,
+  unitDisplay: option<unitDisplayT>,
+  useGrouping: option<bool>,
+  minimumIntegerDigits: option<int>,
+  minimumFractionDigits: option<int>,
+  maximumFractionDigits: option<int>,
+  minimumSignificantDigits: option<int>,
+  maximumSignificantDigits: option<int>,
+}
+
 @obj
-external options: (
-  ~compactDisplay: [@as("short") #Short | @as("long") #Long]=?,
+external makeOptions: (
+  ~compactDisplay: compactDisplayT=?,
   ~currency: string=?,
-  ~currencyDisplay: [
-    | @as("symbol") #Symbol
-    | @as("narrowSymbol") #NarrowSymbol
-    | @as("code") #Code
-    | @as("name") #Name
-  ]=?,
-  ~currencySign: [
-    | @as("standard") #Standard
-    | @as("accounting") #Accounting
-  ]=?,
-  ~localeMatcher: [
-    | @as("lookup") #Lookup
-    | @as("best fit") #BestFit
-  ]=?,
-  ~notation: [
-    | @as("standard") #Standard
-    | @as("scientific") #Scientific
-    | @as("engineering") #Engineering
-    | @as("compact") #Compact
-  ]=?,
-  ~numberingSystem: [
-    | @as("arab") #Arab
-    | @as("arabext") #Arabext
-    | @as("bali") #Bali
-    | @as("beng") #Beng
-    | @as("deva") #Deva
-    | @as("fullwide") #Fullwide
-    | @as("gujr") #Gujr
-    | @as("guru") #Guru
-    | @as("hanidec") #Hanidec
-    | @as("khmr") #Khmr
-    | @as("knda") #Knda
-    | @as("laoo") #Laoo
-    | @as("latn") #Latn
-    | @as("limb") #Limb
-    | @as("mlym") #Mlym
-    | @as("mong") #Mong
-    | @as("mymr") #Mymr
-    | @as("orya") #Orya
-    | @as("tamldec") #Tamldec
-    | @as("telu") #Telu
-    | @as("thai") #Thai
-    | @as("tibt") #Tibt
-  ]=?,
-  ~signDisplay: [
-    | @as("auto") #Auto
-    | @as("never") #Never
-    | @as("always") #Always
-    | @as("exceptZero") #ExceptZero
-  ]=?,
-  ~style: [
-    | @as("decimal") #Decimal
-    | @as("currency") #Currency
-    | @as("percent") #Percent
-    | @as("unit") #Unit
-  ]=?,
-  ~unit: string,
-  ~unitDisplay: [
-    | @as("long") #Long
-    | @as("short") #Short
-    | @as("narrow") #Narrow
-  ]=?,
+  ~currencyDisplay: currencyDisplayT=?,
+  ~currencySign: currencySignT=?,
+  ~localeMatcher: localeMatcherT=?,
+  ~notation: notationT=?,
+  ~numberingSystem: numberingSystemT=?,
+  ~signDisplay: signDisplayT=?,
+  ~style: styleT=?,
+  ~unit: string=?,
+  ~unitDisplay: unitDisplayT=?,
   ~useGrouping: bool=?,
   ~minimumIntegerDigits: int=?,
   ~minimumFractionDigits: int=?,
   ~maximumFractionDigits: int=?,
   ~minimumSignificantDigits: int=?,
   ~maximumSignificantDigits: int=?,
+  unit,
 ) => optionsT = ""
 
 @scope("Intl") @new external make: string => t = "NumberFormat"
@@ -112,4 +150,4 @@ type formatToPartsReturnT = {
 @send external formatToPartsInt: (t, int) => array<formatToPartsReturnT> = "formatToParts"
 @send external formatToPartsFloat: (t, float) => array<formatToPartsReturnT> = "formatToParts"
 
-@send external resolvedOptions: (t, unit) => {..} = "resolvedOptions"
+@send external resolvedOptions: (t, unit) => optionsT = "resolvedOptions"

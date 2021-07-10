@@ -32,7 +32,7 @@ type descriptorT<'any> = {
   writebale: option<bool>,
 }
 @obj
-external descriptor: (
+external makeDescriptor: (
   ~configurable: bool=?,
   ~enumerable: bool=?,
   ~value: 'any=?,

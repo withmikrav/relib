@@ -51,7 +51,18 @@ module Request = {
     | @as("manual") #Manual
   ]
 
-  type initT
+  type initT = {
+    _method: option<HTTP.methodT>,
+    headers: option<Headers.t>,
+    body: option<Body.t>,
+    mode: option<modeT>,
+    credentials: option<credentialsT>,
+    cache: option<cacheT>,
+    redirect: option<redirectT>,
+    referrer: option<string>,
+    integrity: option<string>,
+  }
+
   @obj
   external makeInit: (
     ~_method: HTTP.methodT=?,
