@@ -1,1 +1,3 @@
-type t = int
+include Number.Impl({
+  type t = int
+})

@@ -1,4 +1,7 @@
-type t
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+@ocaml.doc("Number can be int or float")
+type t = float
 
 @new external fromInt: int => t = "Number"
 @new external fromFloat: float => t = "Number"
@@ -63,27 +66,51 @@ external isSafeInteger: 'a => bool = "isSafeInteger"
 
 // Instance methods
 
-@ocaml.doc("Returns a string representing the number in exponential notation.") @send
-external toExponential: (t, unit) => string = "toExponential"
+module Impl = (
+  T: {
+    type t
+  },
+) => {
+  @ocaml.doc("Returns a string representing the number in exponential notation.") @send
+  external toExponential: (t, unit) => string = "toExponential"
 
-@ocaml.doc("Returns a string representing the number in exponential notation.") @send
-external toExponentialWithFractionDigits: (t, ~fractionDigits: int) => string = "toExponential"
+  @ocaml.doc("Returns a string representing the number in exponential notation.") @send
+  external toExponentialWithFractionDigits: (t, ~fractionDigits: int) => string = "toExponential"
 
-@ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
-external toFixed: (t, unit) => string = "toFixed"
+  @ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
+  external toFixed: (t, unit) => string = "toFixed"
 
-@ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
-external toFixedWithDigits: (t, ~digits: int) => string = "toFixed"
+  @ocaml.doc("Returns a string representing the number in fixed-point notation.") @send
+  external toFixedWithDigits: (t, ~digits: int) => string = "toFixed"
 
-@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
-external toLocaleString: (t, unit) => string = "toLocaleString"
+  @ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+  external toLocaleString: (t, unit) => string = "toLocaleString"
 
-@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
-external toLocaleStringWithLocales: (t, ~locales: string) => string = "toLocaleString"
+  @ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+  external toLocaleStringWithLocales: (t, ~locales: string) => string = "toLocaleString"
 
-@ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
-external toLocaleStringWithOptions: (
-  t,
-  ~locales: string,
-  ~options: Intl.NumberFormat.optionsT,
-) => string = "toLocaleString"
+  @ocaml.doc("Returns a string with a language sensitive representation of this number.") @send
+  external toLocaleStringWithOptions: (
+    t,
+    ~locales: string,
+    ~options: Intl.NumberFormat.optionsT,
+  ) => string = "toLocaleString"
+
+  @ocaml.doc(
+    "Returns a string representing the number to a specified precision in fixed-point or exponential notation."
+  )
+  @send
+  external toPrecision: (t, ~digits: int) => string = "toPrecision"
+
+  @ocaml.doc("Returns a string representing the specified number") @send
+  external toString: t => string = "toString"
+
+  @ocaml.doc(
+    "Returns a string representing the specified number in the specified radix (\"base\")."
+  )
+  @send
+  external toStringWithRadix: (t, ~radix: int) => string = "toString"
+
+  @ocaml.doc("Returns the primitive value of the specified object") @send
+  external valueOf: t => t = "valueOf"
+}
