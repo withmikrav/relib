@@ -1,7 +1,14 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+
+@ocaml.doc(
+  "`Symbol` is a built-in object whose constructor returns a `symbol` primitive that’s guaranteed to be unique. `Symbols` are often used to add unique property keys to an object that won’t collide with keys any other code might add to the object, and which are hidden from any mechanisms other code will typically use to access the object. "
+)
 type t = Js.Types.symbol
 
-@val external make: unit => t = "Symbol"
-@val external makeWithDescription: string => t = "Symbol"
+@ocaml.doc("Creates a new `Symbol` object.") @val external make: unit => t = "Symbol"
+
+@ocaml.doc("Creates a new `Symbol` object.") @val
+external makeWithDescription: string => t = "Symbol"
 
 @ocaml.doc(
   "Searches for existing Symbols with the given `key` and returns it if found. Otherwise a new Symbol gets created in the global Symbol registry with `key`."
