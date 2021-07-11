@@ -74,12 +74,12 @@ type responseTypeT = [
 @return(nullable) @send
 external getAllResponseHeader: (t, string) => option<string> = "getAllResponseHeader"
 
-@send external open_: (t, HTTP.methodT, string) => unit = "open"
+@send external open_: (t, ~method: FetchTypes.methodT, ~url: string) => unit = "open"
 @send
 external openWith: (
   t,
-  HTTP.methodT,
-  string,
+  ~method: FetchTypes.methodT,
+  ~url: string,
   ~async: bool=?,
   ~user: string=?,
   ~password: string=?,

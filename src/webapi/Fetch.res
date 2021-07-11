@@ -5,7 +5,7 @@ type t
 include FetchTypes
 
 type initT = {
-  method: option<HTTP.methodT>,
+  method: option<methodT>,
   headers: option<Headers.t>,
   body: option<Body.t>,
   mode: option<modeT>,
@@ -20,7 +20,7 @@ type initT = {
 
 @obj
 external makeInit: (
-  ~method: HTTP.methodT=?,
+  ~method: methodT=?,
   ~headers: Headers.t=?,
   ~body: Body.t=?,
   ~mode: modeT=?,

@@ -5,7 +5,7 @@ include Body.Impl({
 include FetchTypes
 
 type initT = {
-  method: option<HTTP.methodT>,
+  method: option<methodT>,
   headers: option<Headers.t>,
   body: option<Body.t>,
   mode: option<modeT>,
@@ -18,7 +18,7 @@ type initT = {
 
 @obj
 external makeInit: (
-  ~method: HTTP.methodT=?,
+  ~method: methodT=?,
   ~headers: Headers.t=?,
   ~body: Body.t=?,
   ~mode: modeT=?,
@@ -38,7 +38,7 @@ external makeInit: (
 @get external destination: t => destinationT = "destination"
 @get external headers: t => Headers.t = "headers"
 @get external integrity: t => string = "integrity"
-@get external method: t => HTTP.methodT = "method"
+@get external method: t => methodT = "method"
 @get external mode: t => modeT = "mode"
 @get external redirect: t => redirectT = "redirect"
 @get external referrer: t => string = "referrer"
