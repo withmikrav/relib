@@ -1,3 +1,7 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+// https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es5_d_.array.html
+
 @ocaml.doc(
   "The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects."
 )

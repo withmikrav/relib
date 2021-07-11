@@ -1,4 +1,4 @@
-type t
+type t = Js.Types.symbol
 
 @val external make: unit => t = "Symbol"
 @val external makeWithDescription: string => t = "Symbol"
