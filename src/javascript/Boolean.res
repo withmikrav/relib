@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
 type t = bool
 
 @ocaml.doc("Creates a new Boolean object.") @new external make: bool => t = "Boolean"
