@@ -50,7 +50,7 @@ external defineProperty: ({..}, ~prop: string, ~descriptor: descriptorT<'a>) => 
 @ocaml.doc("Adds the named properties described by the given descriptors to an object.")
 @scope("Object")
 @val
-external defineProperties: ({..}, {..}) => {..} = "defineProperties"
+external defineProperties: ({..}, Dict.t<descriptorT<'a>>) => {..} = "defineProperties"
 
 @ocaml.doc(
   "Returns an array containing all of the (key, value) pairs of a given object's own enumerable string properties."
@@ -77,7 +77,7 @@ external getOwnPropertyDescriptor: {..} => descriptorT<'a> = "getOwnPropertyDesc
 @ocaml.doc("Returns an object containing all own property descriptors for an object.")
 @scope("Object")
 @val
-external getOwnPropertyDescriptors: {..} => {..} = "getOwnPropertyDescriptors"
+external getOwnPropertyDescriptors: {..} => Dict.t<descriptorT<'a>> = "getOwnPropertyDescriptors"
 
 @ocaml.doc(
   "Returns an array containing the names of all of the given object's own enumerable and non-enumerable properties."
@@ -121,7 +121,7 @@ external seal: {..} => {..} = "seal"
 )
 @scope("Object")
 @val
-external values: {..} => {..} = "values"
+external values: {..} => array<'a> = "values"
 
 // Instance methods
 

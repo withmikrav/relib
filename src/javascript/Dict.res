@@ -13,9 +13,8 @@ external toObject: t<'a> => {..} = "%identity"
 @ocaml.doc("Create dictionary from an object")
 external unsafe_fromObject: {..} => t<'a> = "%identity"
 
-@ocaml.doc("Create dictionary from an array containing pairs of key/value")
-let fromEntries: array<(keyT, 'a)> => t<'a> = entries =>
-  entries->Object.fromEntries->unsafe_fromObject
+@ocaml.doc("Create dictionary from an array containing pairs of key/value") @scope("Object") @val
+external fromEntries: array<(string, 'a)> => t<'a> = "fromEntries"
 
 let delete: (t<'a>, keyT) => unit = (_dict, _key) => %raw(`delete _dict[_key]`)
 
@@ -26,14 +25,14 @@ external set: (t<'a>, keyT, 'a) => unit = ""
 @get_index
 external get: (t<'a>, keyT) => option<'a> = ""
 
-@ocaml.doc("Returns all the keys in the dictionary")
-let keys = dict => dict->toObject->Object.keys
+@ocaml.doc("Returns all the keys in the dictionary") @scope("Object") @val
+external keys: t<'a> => array<string> = "keys"
 
-@ocaml.doc("Returns all the values in the dictionary")
-let values = dict => dict->toObject->Object.values
+@ocaml.doc("Returns all the values in the dictionary") @scope("Object") @val
+external values: t<'a> => array<'a> = "values"
 
-@ocaml.doc("Returns all the pairs of (key/value) in the dictionary")
-let entries = dict => dict->toObject->Object.entries
+@ocaml.doc("Returns all the pairs of (key/value) in the dictionary") @scope("Object") @val
+external entries: t<'a> => array<(string, 'a)> = "keys"
 
 @ocaml.doc("Maps a dictionary to a new dictionary with the same keys")
 let map = (dict, fn) =>
