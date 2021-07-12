@@ -224,7 +224,7 @@ external toLocaleStringWithNumberOptions: (t<'a>, string, Intl.NumberFormat.opti
   "toLocaleString"
 
 @ocaml.doc("Returns a localized string representing the array and its elements.") @send
-external toLocaleStringWitDateOptions: (t<'a>, string, Intl.DateFormat.optionsT) => string =
+external toLocaleStringWithDateOptions: (t<'a>, string, Intl.DateTimeFormat.optionsT) => string =
   "toLocaleString"
 
 // toString

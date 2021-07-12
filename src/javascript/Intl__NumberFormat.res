@@ -121,8 +121,10 @@ external makeOptions: (
 @scope("Intl.NumberFormat") @val
 external supportedLocalesOf: array<string> => array<string> = "supportedLocalesOf"
 
+type supportedLocalesOptionsT = {localeMatcher: localeMatcherT}
+
 @scope("Intl.NumberFormat") @val
-external supportedLocalesOfWithOptions: (array<string>, optionsT) => array<string> =
+external supportedLocalesOfWithOptions: (array<string>, supportedLocalesOptionsT) => array<string> =
   "supportedLocalesOf"
 
 @send external formatInt: (t, int) => string = "format"

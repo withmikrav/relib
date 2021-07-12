@@ -1,3 +1,3 @@
 module NumberFormat = Intl__NumberFormat
 
-module DateFormat = Intl__DateFormat
+module DateTimeFormat = Intl__DateTimeFormat
