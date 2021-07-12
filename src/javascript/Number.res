@@ -3,11 +3,10 @@
 @ocaml.doc("Number can be int or float")
 type t = float
 
-@new external fromInt: int => t = "Number"
-@new external fromFloat: float => t = "Number"
-
-external unsafe_toInt: t => int = "%identity"
-external unsafe_toFloat: t => float = "%identity"
+@val external fromInt: int => t = "Number"
+@val external fromFloat: float => t = "Number"
+@val external fromString: string => t = "Number"
+@val external fromDate: Date.t => t = "Number"
 
 // Static properties
 
@@ -43,34 +42,35 @@ external _POSITIVE_INFINITY: t = "POSITIVE_INFINITY"
 
 // Static methods
 
-@ocaml.doc("Determine whether the passed value is `NaN`.") @scope("Number") @val
-external isNaN: 'a => bool = "isNaN"
-
-@ocaml.doc("Determine whether the passed value is a finite number.") @scope("Number") @val
-external isFinite: 'a => bool = "isFinite"
-
-@ocaml.doc("Determine whether the passed value is an integer.") @scope("Number") @val
-external isInteger: 'a => bool = "isInteger"
-
-@ocaml.doc(
-  "Determine whether the passed value is a safe integer (number between `-(2^53 - 1)` and `2^53 - 1`)."
-)
-@scope("Number")
-@val
-external isSafeInteger: 'a => bool = "isSafeInteger"
-
 @scope("Number") @val external parseFloat: string => float = "parseFloat"
 
 @scope("Number") @val external parseInt: string => int = "parseInt"
 @scope("Number") @val external parseIntWithRadix: (string, ~radix: int) => int = "parseInt"
-
-// Instance methods
 
 module Impl = (
   T: {
     type t
   },
 ) => {
+  // Static methods
+
+  @ocaml.doc("Determine whether the passed value is `NaN`.") @scope("Number") @val
+  external isNaN: t => bool = "isNaN"
+
+  @ocaml.doc("Determine whether the passed value is a finite number.") @scope("Number") @val
+  external isFinite: t => bool = "isFinite"
+
+  @ocaml.doc("Determine whether the passed value is an integer.") @scope("Number") @val
+  external isInteger: t => bool = "isInteger"
+
+  @ocaml.doc(
+    "Determine whether the passed value is a safe integer (number between `-(2^53 - 1)` and `2^53 - 1`)."
+  )
+  @scope("Number")
+  @val
+  external isSafeInteger: t => bool = "isSafeInteger"
+
+  // Instance methods
   @ocaml.doc("Returns a string representing the number in exponential notation.") @send
   external toExponential: (t, unit) => string = "toExponential"
 
