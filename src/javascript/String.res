@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
 @ocaml.doc("The String object is used to represent and manipulate a sequence of characters.")
 type t = string
 
