@@ -3,38 +3,24 @@
 
 type t
 
-external unsafeFromAny: 'any => t = "%identity"
+external unsafe_fromAny: 'any => t = "%identity"
 
 @ocaml.doc("create functions dynamically, but suffers from security and similar") @new
-external unsafeMake: (~args: array<'a>, ~body: string) => t = "Function"
+external unsafe_make: (~args: array<'a>, ~body: string) => t = "Function"
 
 @ocaml.doc("create functions dynamically, but suffers from security and similar") @new
-external unsafeMake2: ('arg1, 'arg2, ~body: string) => t = "Function"
+external unsafe_make2: ('arg1, 'arg2, ~body: string) => t = "Function"
 
 @ocaml.doc("create functions dynamically, but suffers from security and similar") @new
-external unsafeMake3: ('arg1, 'arg2, 'arg3, ~body: string) => t = "Function"
+external unsafe_make3: ('arg1, 'arg2, 'arg3, ~body: string) => t = "Function"
 
 @ocaml.doc("create functions dynamically, but suffers from security and similar") @new
-external unsafeMake4: ('arg1, 'arg2, 'arg3, 'arg4, ~body: string) => t = "Function"
+external unsafe_make4: ('arg1, 'arg2, 'arg3, 'arg4, ~body: string) => t = "Function"
 
 @ocaml.doc("create functions dynamically, but suffers from security and similar") @new
-external unsafeMake5: ('arg1, 'arg2, 'arg3, 'arg4, 'arg5, ~body: string) => t = "Function"
+external unsafe_make5: ('arg1, 'arg2, 'arg3, 'arg4, 'arg5, ~body: string) => t = "Function"
 
 // Instance properties
-
-@ocaml.doc("An array corresponding to the arguments passed to a function.
-
-This is deprecated as a property of Function. Use the `arguments` object (available within the function) instead.")
-@deprecated
-@get
-external arguments: t => 'any = "arguments"
-
-@ocaml.doc("Specifies the function that invoked the currently executing function.
-
-This property is deprecated, and is only functional for some non-strict functions.")
-@deprecated
-@get
-external caller: t => t = "caller"
 
 @ocaml.doc("Specifies the number of arguments expected by the function.") @get
 external length: t => int = "length"
