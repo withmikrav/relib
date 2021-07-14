@@ -1,7 +1,7 @@
 @ocaml.doc(
   "The `SharedArrayBuffer` object is used to represent a generic, fixed-length raw binary data buffer, similar to the `ArrayBuffer` object, but in a way that they can be used to create views on shared memory. Unlike an `ArrayBuffer`, a `SharedArrayBuffer` cannot become detached."
 )
-type t
+type t = Js.TypedArray2.array_buffer
 
 @new external make: int => t = "SharedArrayBuffer"
 
