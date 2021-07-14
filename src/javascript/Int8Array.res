@@ -2,10 +2,21 @@ include TypedArray.Impl({
   @ocaml.doc(
     "The `Int8Array` typed array represents an array of twos-complement 8-bit signed integers. The contents are initialized to 0."
   )
-  type t = Js.TypedArray2.Int8Array.t
+  type t = TypedArray.t<int>
 
   type childT = int
 })
+
+//
+
+@new
+external make: unit => t = "Int8Array"
+
+@new
+external makeWithLength: int => t = "Int8Array"
+
+@new
+external fromArrayBuffer: (ArrayBuffer.t, ~offset: int, ~length: int) => t = "Int8Array"
 
 // Static properties
 
@@ -27,10 +38,10 @@ external name: string = "name"
 external of_: t => t = "of"
 
 @scope("Int8Array") @val
-external fromArray: array<childT> => t = "from"
+external fromArrayLike: ArrayLike.t<'a> => t = "from"
 
 @scope("Int8Array") @val
-external fromArrayWithMap: (array<'a>, 'a => childT) => t = "from"
+external fromArrayLikeWithMap: (ArrayLike.t<'a>, 'a => childT) => t = "from"
 
 @scope("Int8Array") @val
 external fromObject: {..} => t = "from"
@@ -43,15 +54,3 @@ external fromString: string => t = "from"
 
 @scope("Int8Array") @val
 external fromStringWithMap: (string, string => childT) => t = "from"
-
-@scope("Int8Array") @val
-external fromMap: Map.t<'key, childT> => t = "from"
-
-@scope("Int8Array") @val
-external fromMapWithMap: (Map.t<'key, 'value>, (('key, 'value)) => childT) => t = "from"
-
-@scope("Int8Array") @val
-external fromSet: Set.t<childT> => t = "from"
-
-@scope("Int8Array") @val
-external fromSetWithMap: (Set.t<'a>, 'a => childT) => t = "from"

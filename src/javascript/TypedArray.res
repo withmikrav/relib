@@ -3,6 +3,8 @@
 // TypedArray constructor. Instead, there are a number of different global properties,
 // whose values are typed array constructors for specific element types
 
+type t<'a> = ArrayLike.t<'a>
+
 module Impl = (
   T: {
     type t
