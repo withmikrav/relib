@@ -1,1 +1,1 @@
-type t<'a>
+type t<'key, 'value>
