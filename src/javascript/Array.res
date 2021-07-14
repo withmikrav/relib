@@ -45,6 +45,24 @@ external fillFromStart: (t<'a>, ~value: 'a, ~start: int) => t<'a> = "fill"
 external fill: (t<'a>, ~value: 'a, ~start: int, ~end: int) => t<'a> = "fill"
 
 @ocaml.doc(
+  "Creates a new array with all of the elements of this array for which the provided filtering function returns `true`."
+)
+@send
+external filter: (t<'a>, 'a => bool) => t<'a> = "filter"
+
+@ocaml.doc(
+  "Creates a new array with all of the elements of this array for which the provided filtering function returns `true`."
+)
+@send
+external filterWithIndex: (t<'a>, ('a, int) => bool) => t<'a> = "filter"
+
+@ocaml.doc(
+  "Creates a new array with all of the elements of this array for which the provided filtering function returns `true`."
+)
+@send
+external filterWithSource: (t<'a>, ('a, int, t<'a>) => bool) => t<'a> = "filter"
+
+@ocaml.doc(
   "Returns the found element in the array, if some element in the array satisfies the testing function."
 )
 @send
@@ -130,37 +148,37 @@ external pushMany: (t<'a>, array<'a>) => int = "push"
   "Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value."
 )
 @send
-external reduce: (t<'a>, ('b, 'b) => 'b, 'b) => 'b = "reduce"
+external reduce: (t<'a>, ('a, 'a) => 'b, 'b) => 'b = "reduce"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value."
 )
 @send
-external reduceWithIndex: (t<'a>, ('b, 'b, int) => 'b, 'b) => 'b = "reduce"
+external reduceWithIndex: (t<'a>, ('a, 'a, int) => 'b, 'b) => 'b = "reduce"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value."
 )
 @send
-external reduceWithSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b) => 'b = "reduce"
+external reduceWithSource: (t<'a>, ('a, 'a, int, t<'a>) => 'b) => 'b = "reduce"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value."
 )
 @send
-external reduceRight: (t<'a>, ('b, 'b) => 'b, 'b) => 'b = "reduceRight"
+external reduceRight: (t<'a>, ('a, 'a) => 'b, 'b) => 'b = "reduceRight"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value."
 )
 @send
-external reduceRightWithIndex: (t<'a>, ('b, 'b, int) => 'b, 'b) => 'b = "reduceRight"
+external reduceRightWithIndex: (t<'a>, ('a, 'a, int) => 'b, 'b) => 'b = "reduceRight"
 
 @ocaml.doc(
   "Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value."
 )
 @send
-external reduceRightWithSource: (t<'a>, ('b, 'b, int, t<'a>) => 'b, 'b) => 'b = "reduceRight"
+external reduceRightWithSource: (t<'a>, ('a, 'a, int, t<'a>) => 'b, 'b) => 'b = "reduceRight"
 
 @ocaml.doc(
   "Reverses the order of the elements of an array in place. (First becomes the last, last becomes first.)"
@@ -227,7 +245,8 @@ external toLocaleStringWithNumberOptions: (t<'a>, string, Intl.NumberFormat.opti
 external toLocaleStringWithDateOptions: (t<'a>, string, Intl.DateTimeFormat.optionsT) => string =
   "toLocaleString"
 
-// toString
+@ocaml.doc("Returns a string representing the array and its elements.") @send
+external toString: t<'a> => string = "toString"
 
 @ocaml.doc("Adds an element to the front of an array, and returns the new length of the array.")
 @send
