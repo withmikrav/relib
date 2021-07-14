@@ -85,4 +85,4 @@ external call4: (t, 'thisArg, 'arg1, 'arg2, 'arg3, 'arg4) => unit = "call"
 external call5: (t, 'thisArg, 'arg1, 'arg2, 'arg3, 'arg4, 'arg5) => unit = "call"
 
 @ocaml.doc("Returns a string representing the source code of the function.") @send
-external toString: (t, unit) => t = "toString"
+external toString: (t, unit) => string = "toString"
