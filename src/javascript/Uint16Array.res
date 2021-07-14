@@ -1,10 +1,10 @@
 include TypedArray.Impl({
+  type childT = int
+
   @ocaml.doc(
     "The `Uint16Array` typed array represents an array of 16-bit unsigned integers in the platform byte order. If control over byte order is needed, use DataView instead. "
   )
-  type t = Js.TypedArray2.Uint16Array.t
-
-  type childT = int
+  type t = TypedArray.t<childT>
 })
 
 @new
@@ -36,10 +36,10 @@ external name: string = "name"
 external of_: t => t = "of"
 
 @scope("Uint16Array") @val
-external fromArray: array<childT> => t = "from"
+external fromArrayLike: ArrayLike.t<'a> => t = "from"
 
 @scope("Uint16Array") @val
-external fromArrayWithMap: (array<'a>, 'a => childT) => t = "from"
+external fromArrayLikeWithMap: (ArrayLike.t<'a>, 'a => childT) => t = "from"
 
 @scope("Uint16Array") @val
 external fromObject: {..} => t = "from"
@@ -52,15 +52,3 @@ external fromString: string => t = "from"
 
 @scope("Uint16Array") @val
 external fromStringWithMap: (string, string => childT) => t = "from"
-
-@scope("Uint16Array") @val
-external fromMap: Map.t<'key, childT> => t = "from"
-
-@scope("Uint16Array") @val
-external fromMapWithMap: (Map.t<'key, 'value>, (('key, 'value)) => childT) => t = "from"
-
-@scope("Uint16Array") @val
-external fromSet: Set.t<childT> => t = "from"
-
-@scope("Uint16Array") @val
-external fromSetWithMap: (Set.t<'a>, 'a => childT) => t = "from"

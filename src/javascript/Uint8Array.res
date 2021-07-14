@@ -1,10 +1,10 @@
 include TypedArray.Impl({
+  type childT = int
+
   @ocaml.doc(
     "The `Uint8Array` typed array represents an array of twos-complement 8-bit unsigned integers. The contents are initialized to 0."
   )
-  type t = TypedArray.t<int>
-
-  type childT = int
+  type t = TypedArray.t<childT>
 })
 
 //

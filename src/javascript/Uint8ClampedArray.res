@@ -1,10 +1,10 @@
 include TypedArray.Impl({
+  type childT = int
+
   @ocaml.doc("The Uint8ClampedArray typed array represents an array of 8-bit unsigned integers clamped to 0-255;.
     
 if you specified a value that is out of the range of [0,255], 0 or 255 will be set instead; if you specify a non-integer, the nearest integer will be set.")
-  type t = TypedArray.t<int>
-
-  type childT = int
+  type t = TypedArray.t<childT>
 })
 
 //

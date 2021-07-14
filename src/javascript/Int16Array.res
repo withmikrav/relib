@@ -1,10 +1,10 @@
 include TypedArray.Impl({
+  type childT = int
+
   @ocaml.doc(
     "The `Int16Array` typed array represents an array of twos-complement 16-bit signed integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0."
   )
-  type t = TypedArray.t<int>
-
-  type childT = int
+  type t = TypedArray.t<childT>
 })
 
 //
