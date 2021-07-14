@@ -35,7 +35,7 @@ module Impl = (
     "Takes a `Response` stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as `JSON`."
   )
   @send
-  external json: (t, unit) => Promise.t<Json.t> = "json"
+  external json: (t, unit) => Promise.t<Js.Json.t> = "json"
 
   @ocaml.doc(
     "Takes a Response stream and reads it to completion. It returns a promise that resolves with a `String`. The response is always decoded using UTF-8."

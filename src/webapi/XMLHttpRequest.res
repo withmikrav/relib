@@ -22,7 +22,7 @@ module Response = {
   external unsafe_toArrayBuffer: t => ArrayBuffer.t = "%identity"
   external unsafe_toDocument: t => Document.t = "%identity"
   external unsafe_toString: t => string = "%identity"
-  external unsafe_toJson: t => Json.t = "%identity"
+  external unsafe_toJson: t => Js.Json.t = "%identity"
 }
 
 type readyStateT =
