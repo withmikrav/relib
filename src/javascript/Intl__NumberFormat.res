@@ -2,75 +2,75 @@
 
 type t
 
-type compactDisplayT = [@as("short") #Short | @as("long") #Long]
+type compactDisplayT = [#short | #long]
 
 type currencyDisplayT = [
-  | @as("symbol") #Symbol
-  | @as("narrowSymbol") #NarrowSymbol
-  | @as("code") #Code
-  | @as("name") #Name
+  | #symbol
+  | #narrowSymbol
+  | #code
+  | #name
 ]
 
 type currencySignT = [
-  | @as("standard") #Standard
-  | @as("accounting") #Accounting
+  | #standard
+  | #accounting
 ]
 
 type localeMatcherT = [
-  | @as("lookup") #Lookup
-  | @as("best fit") #BestFit
+  | #lookup
+  | #"best fit"
 ]
 
 type notationT = [
-  | @as("standard") #Standard
-  | @as("scientific") #Scientific
-  | @as("engineering") #Engineering
-  | @as("compact") #Compact
+  | #standard
+  | #scientific
+  | #engineering
+  | #compact
 ]
 
 type numberingSystemT = [
-  | @as("arab") #Arab
-  | @as("arabext") #Arabext
-  | @as("bali") #Bali
-  | @as("beng") #Beng
-  | @as("deva") #Deva
-  | @as("fullwide") #Fullwide
-  | @as("gujr") #Gujr
-  | @as("guru") #Guru
-  | @as("hanidec") #Hanidec
-  | @as("khmr") #Khmr
-  | @as("knda") #Knda
-  | @as("laoo") #Laoo
-  | @as("latn") #Latn
-  | @as("limb") #Limb
-  | @as("mlym") #Mlym
-  | @as("mong") #Mong
-  | @as("mymr") #Mymr
-  | @as("orya") #Orya
-  | @as("tamldec") #Tamldec
-  | @as("telu") #Telu
-  | @as("thai") #Thai
-  | @as("tibt") #Tibt
+  | #arab
+  | #arabext
+  | #bali
+  | #beng
+  | #deva
+  | #fullwide
+  | #gujr
+  | #guru
+  | #hanidec
+  | #khmr
+  | #knda
+  | #laoo
+  | #latn
+  | #limb
+  | #mlym
+  | #mong
+  | #mymr
+  | #orya
+  | #tamldec
+  | #telu
+  | #thai
+  | #tibt
 ]
 
 type signDisplayT = [
-  | @as("auto") #Auto
-  | @as("never") #Never
-  | @as("always") #Always
-  | @as("exceptZero") #ExceptZero
+  | #auto
+  | #never
+  | #always
+  | #exceptZero
 ]
 
 type styleT = [
-  | @as("decimal") #Decimal
-  | @as("currency") #Currency
-  | @as("percent") #Percent
-  | @as("unit") #Unit
+  | #decimal
+  | #currency
+  | #percent
+  | #unit
 ]
 
 type unitDisplayT = [
-  | @as("long") #Long
-  | @as("short") #Short
-  | @as("narrow") #Narrow
+  | #long
+  | #short
+  | #narrow
 ]
 
 type optionsT = {
@@ -133,18 +133,18 @@ external supportedLocalesOfWithOptions: (array<string>, supportedLocalesOptionsT
 type formatToPartsReturnT = {
   @as("type")
   type_: [
-    | @as("currency") #Currency
-    | @as("decimal") #Decimal
-    | @as("fraction") #Fraction
-    | @as("group") #Group
-    | @as("infinity") #Infinity
-    | @as("integer") #Integer
-    | @as("literal") #Literal
-    | @as("minusSign") #MinusSign
-    | @as("nan") #NaN
-    | @as("plusSign") #PlusSign
-    | @as("percentSign") #PercentSign
-    | @as("unit") #Unit
+    | #currency
+    | #decimal
+    | #fraction
+    | #group
+    | #infinity
+    | #integer
+    | #literal
+    | #minusSign
+    | #nan
+    | #plusSign
+    | #percentSign
+    | #unit
   ],
   value: string,
 }

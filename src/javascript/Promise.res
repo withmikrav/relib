@@ -64,7 +64,7 @@ external all6: ((t<'a>, t<'b>, t<'c>, t<'d>, t<'e>, t<'f>)) => t<('a, 'b, 'c, 'd
 
 // allSettled
 
-type settledResultStatusT = [@as("fullfilled") #Fullfilled | @as("rejected") #Rejected]
+type settledResultStatusT = [#fullfilled | #rejected]
 type settledResultT<'a> = {
   status: settledResultStatusT,
   value: option<'a>,

@@ -5,10 +5,10 @@ type t
 
 @ocaml.doc("The date formatting style to use when calling `format()`.")
 type dateStyleT = [
-  | @as("full") #Full
-  | @as("long") #Long
-  | @as("medium") #Medium
-  | @as("short") #Short
+  | #full
+  | #long
+  | #medium
+  | #short
 ]
 
 @ocaml.doc("The time formatting style to use when calling `format()`.")
@@ -16,59 +16,59 @@ type timeStyleT = [dateStyleT]
 
 @ocaml.doc("Calendar")
 type calendarT = [
-  | @as("buddhist") #Buddhist
-  | @as("chinese") #Chinese
-  | @as("coptic") #Coptic
-  | @as("ethiopia") #Ethiopia
-  | @as("ethiopic") #Ethiopic
-  | @as("gregory") #Gregory
-  | @as("hebrew") #Hebrew
-  | @as("indian") #Indian
-  | @as("islamic") #Islamic
-  | @as("iso8601") #Iso8601
-  | @as("japanese") #Japanese
-  | @as("persian") #Persian
-  | @as("roc") #Roc
+  | #buddhist
+  | #chinese
+  | #coptic
+  | #ethiopia
+  | #ethiopic
+  | #gregory
+  | #hebrew
+  | #indian
+  | #islamic
+  | #iso8601
+  | #japanese
+  | #persian
+  | #roc
 ]
 
 @ocaml.doc(
   "The formatting style used for day periods like \"in the morning\", \"am\", \"noon\", \"n\" etc."
 )
 type dayPeriodT = [
-  | @as("narrow") #Narrow
-  | @as("short") #Short
-  | @as("long") #Long
+  | #narrow
+  | #short
+  | #long
 ]
 
 @ocaml.doc("Numbering System")
 type numberingSystemT = [
-  | @as("arab") #Arab
-  | @as("arabext") #Arabext
-  | @as("bali") #Bali
-  | @as("beng") #Beng
-  | @as("deva") #Deva
-  | @as("fullwide") #Fullwide
-  | @as("gujr") #Gujr
-  | @as("guru") #Guru
-  | @as("hanidec") #Hanidec
-  | @as("khmr") #Khmr
-  | @as("knda") #Knda
-  | @as("laoo") #Laoo
-  | @as("latn") #Latn
-  | @as("limb") #Limb
-  | @as("mlym") #Mlym
-  | @as("mong") #Mong
-  | @as("mymr") #Mymr
-  | @as("orya") #Orya
-  | @as("tamldec") #Tamldec
-  | @as("telu") #Telu
-  | @as("thai") #Thai
-  | @as("tibt") #Tibt
+  | #arab
+  | #arabext
+  | #bali
+  | #beng
+  | #deva
+  | #fullwide
+  | #gujr
+  | #guru
+  | #hanidec
+  | #khmr
+  | #knda
+  | #laoo
+  | #latn
+  | #limb
+  | #mlym
+  | #mong
+  | #mymr
+  | #orya
+  | #tamldec
+  | #telu
+  | #thai
+  | #tibt
 ]
 
 type localeMatcherT = [
-  | @as("lookup") #Lookup
-  | @as("best fit") #BestFit
+  | #lookup
+  | #"best fit"
 ]
 
 @ocaml.doc("Whether to use 12-hour time (as opposed to 24-hour time).")
@@ -78,15 +78,15 @@ type hour12T = bool
   "The hour cycle to use. Possible values are \"h11\", \"h12\", \"h23\", or \"h24\". This option overrides the hc language tag, if both are present, and the hour12 option takes precedence in case both options have been specified."
 )
 type hourCycleT = [
-  | @as("h11") #H11
-  | @as("h12") #H12
-  | @as("h23") #H23
-  | @as("h24") #H24
+  | #h11
+  | #h12
+  | #h23
+  | #h24
 ]
 
 type formatMatcherT = [
   | localeMatcherT
-  | @as("basic") #Basic
+  | #basic
 ]
 
 type weekdayT = [dayPeriodT]
@@ -94,8 +94,8 @@ type weekdayT = [dayPeriodT]
 type eraT = [weekdayT]
 
 type yearT = [
-  | @as("numeric") #Numeric
-  | @as("2-digit") #TwoDigit
+  | #numeric
+  | #"2-digit"
 ]
 
 type monthT = [yearT | eraT]
@@ -111,8 +111,8 @@ type secondT = [yearT]
 type fractionalSecondDigitsT = Zero | One | Two | Three
 
 type timeZoneNameT = [
-  | @as("long") #Long
-  | @as("short") #Short
+  | #long
+  | #short
 ]
 
 type optionsT = {
@@ -190,20 +190,20 @@ external format: (t, Js.Date.t) => string = "format"
 type formatToPartsReturnT = {
   @as("type")
   type_: [
-    | @as("day") #Day
-    | @as("dayPeriod") #DayPeriod
-    | @as("era") #Era
-    | @as("fractionalSecond") #FractionalSecond
-    | @as("hour") #Hour
-    | @as("literal") #Literal
-    | @as("minute") #Minute
-    | @as("month") #Month
-    | @as("relatedYear") #RelatedYear
-    | @as("second") #Second
-    | @as("timeZoneName") #TimeZoneName
-    | @as("weekday") #Weekday
-    | @as("year") #Year
-    | @as("yearName") #YearName
+    | #day
+    | #dayPeriod
+    | #era
+    | #fractionalSecond
+    | #hour
+    | #literal
+    | #minute
+    | #month
+    | #relatedYear
+    | #second
+    | #timeZoneName
+    | #weekday
+    | #year
+    | #yearName
   ],
   value: string,
 }

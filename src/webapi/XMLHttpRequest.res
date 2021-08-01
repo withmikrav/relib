@@ -33,12 +33,12 @@ type readyStateT =
   | Done
 
 type responseTypeT = [
-  | @as("") #Default
-  | @as("arraybuffer") #ArrayBuffer
-  | @as("blob") #Blob
-  | @as("document") #Document
-  | @as("json") #Json
-  | @as("text") #Text
+  | @as("") #default
+  | #arraybuffer
+  | #blob
+  | #document
+  | #json
+  | #text
 ]
 
 @new external make: unit => t = "XMLHttpRequest"

@@ -6,13 +6,13 @@ module Impl = (
   include EventTarget.Impl({
     type t
     type eventTypeT = [
-      | @as("abort") #Abort
-      | @as("error") #Error
-      | @as("load") #Load
-      | @as("loadend") #LoadEnd
-      | @as("loadstart") #LoadStart
-      | @as("progress") #Progress
-      | @as("timeout") #Timeout
+      | #abort
+      | #error
+      | #load
+      | #loadend
+      | #loadstart
+      | #progress
+      | #timeout
     ]
   })
 

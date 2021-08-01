@@ -1,69 +1,69 @@
 type methodT = [
-  | @as("GET") #Get
-  | @as("HEAD") #Head
-  | @as("POST") #Post
-  | @as("PUT") #Put
-  | @as("DELETE") #Delete
-  | @as("CONNECT") #Connect
-  | @as("OPTIONS") #Options
-  | @as("TRACE") #Trace
-  | @as("PATCH") #Patch
+  | #GET
+  | #HEAD
+  | #POST
+  | #PUT
+  | #DELETE
+  | #CONNECT
+  | #OPTIONS
+  | #TRACE
+  | #PATCH
 ]
 
 type modeT = [
-  | @as("cors") #Cors
-  | @as("no-cors") #NoCors
-  | @as("same-origin") #SameOrigin
-  | @as("navigate") #Navigate
+  | #cors
+  | #"no-cors"
+  | #"same-origin"
+  | #navigate
 ]
 
 type credentialsT = [
-  | @as("omit") #Omit
-  | @as("same-origin") #SameOrigin
-  | @as("include") #Include
+  | #omit
+  | #"same-origin"
+  | #"include"
 ]
 
 type cacheT = [
-  | @as("default") #Default
-  | @as("no-store") #NoStore
-  | @as("reload") #Reload
-  | @as("no-cache") #NoCache
-  | @as("force-cache") #ForceCache
-  | @as("only-if-cached") #OnlyIfCached
+  | #default
+  | #"no-store"
+  | #reload
+  | #"no-cache"
+  | #"force-cache"
+  | #"only-if-cached"
 ]
 
 type redirectT = [
-  | @as("follow") #Follow
-  | @as("error") #Error
-  | @as("manual") #Manual
+  | #follow
+  | #error
+  | #manual
 ]
 
 type destinationT = [
-  | @as("") #Default
-  | @as("audio") #Audio
-  | @as("audioworklet") #AudioWorklet
-  | @as("document") #Document
-  | @as("embed") #Embed
-  | @as("font") #Font
-  | @as("image") #Image
-  | @as("manifest") #Manifest
-  | @as("object") #Object
-  | @as("paintworklet") #PaintWorklet
-  | @as("report") #Report
-  | @as("script") #Script
-  | @as("serviceworker") #ServiceWorker
-  | @as("sharedworker") #SharedWorker
-  | @as("style") #Style
-  | @as("track") #Track
-  | @as("video") #Video
-  | @as("worker") #Worker
-  | @as("xslt") #Xslt
+  | @as("") #default
+  | #audio
+  | #audioworklet
+  | #document
+  | #embed
+  | #font
+  | #image
+  | #manifest
+  | #object
+  | #paintworklet
+  | #report
+  | #script
+  | #serviceworker
+  | #sharedworker
+  | #style
+  | #track
+  | #video
+  | #worker
+  | #xslt
 ]
 
 type typeT = [
-  | @as("basic") #Basic
-  | @as("cors") #Cors
-  | @as("error") #Error
-  | @as("opaque") #Opaque
-  | @as("opaqueredirect") #OpaqueRedirect
+  | #basic
+  | #cors
+  | #error
+  | #opaque
+  | #opaqueredirect
 ]
