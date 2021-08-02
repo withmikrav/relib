@@ -7,7 +7,7 @@ type t
 
 // Properties
 
-@get external signal: t => AbortSignal.t = "signal"
+@get external signal: t => Web__AbortSignal.t = "signal"
 
 // Methods
 

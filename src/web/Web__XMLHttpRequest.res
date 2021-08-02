@@ -1,26 +1,26 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 // https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.xmlhttprequest.html
 
-include XMLHttpRequestEventTarget.Impl({
+include Web__XMLHttpRequestEventTarget.Impl({
   type t
 })
 
 module Body = {
   type t
 
-  external fromBlob: Blob.t => t = "%identity"
+  external fromBlob: Web__Blob.t => t = "%identity"
   external fromArrayBuffer: ArrayBuffer.t => t = "%identity"
-  external fromFormData: FormData.t => t = "%identity"
-  external fromURLSearchParams: URLSearchParams.t => t = "%identity"
+  external fromFormData: Web__FormData.t => t = "%identity"
+  external fromURLSearchParams: Web__URLSearchParams.t => t = "%identity"
   external fromString: string => t = "%identity"
 }
 
 module Response = {
   type t
 
-  external unsafe_toBlob: t => Blob.t = "%identity"
+  external unsafe_toBlob: t => Web__Blob.t = "%identity"
   external unsafe_toArrayBuffer: t => ArrayBuffer.t = "%identity"
-  external unsafe_toDocument: t => Document.t = "%identity"
+  external unsafe_toDocument: t => Web__Document.t = "%identity"
   external unsafe_toString: t => string = "%identity"
   external unsafe_toJson: t => Js.Json.t = "%identity"
 }
@@ -55,14 +55,14 @@ type responseTypeT = [
 @set external setResponseType: (t, responseTypeT) => unit = "responseType"
 
 @return(nullable) @get external responseURL: t => option<string> = "responseURL"
-@return(nullable) @get external responseXML: t => option<Document.t> = "responseXML"
+@return(nullable) @get external responseXML: t => option<Web__Document.t> = "responseXML"
 @get external status: t => int = "status"
 @get external statusText: t => string = "statusText"
 
 @get external timeout: t => int = "timeout"
 @set external setTimeout: (t, int) => unit = "timeout"
 
-@get external upload: t => XMLHttpRequestUpload.t = "upload"
+@get external upload: t => Web__XMLHttpRequestUpload.t = "upload"
 @get external withCredentials: t => bool = "withCredentials"
 
 // Methods
@@ -74,11 +74,11 @@ type responseTypeT = [
 @return(nullable) @send
 external getAllResponseHeader: (t, string) => option<string> = "getAllResponseHeader"
 
-@send external open_: (t, ~method: FetchTypes.methodT, ~url: string) => unit = "open"
+@send external open_: (t, ~method: Web__FetchTypes.methodT, ~url: string) => unit = "open"
 @send
 external openWith: (
   t,
-  ~method: FetchTypes.methodT,
+  ~method: Web__FetchTypes.methodT,
   ~url: string,
   ~async: bool=?,
   ~user: string=?,

@@ -2,12 +2,12 @@
 
 type t
 
-include FetchTypes
+open Web__FetchTypes
 
 type initT = {
   method: option<methodT>,
-  headers: option<Headers.t>,
-  body: option<Body.t>,
+  headers: option<Web__Headers.t>,
+  body: option<Web__Body.t>,
   mode: option<modeT>,
   credentials: option<credentialsT>,
   cache: option<cacheT>,
@@ -15,14 +15,14 @@ type initT = {
   referrer: option<string>,
   integrity: option<string>,
   keepalive: option<bool>,
-  signal: option<AbortSignal.t>,
+  signal: option<Web__AbortSignal.t>,
 }
 
 @obj
 external makeInit: (
   ~method: methodT=?,
-  ~headers: Headers.t=?,
-  ~body: Body.t=?,
+  ~headers: Web__Headers.t=?,
+  ~body: Web__Body.t=?,
   ~mode: modeT=?,
   ~credentials: credentialsT=?,
   ~cache: cacheT=?,
@@ -30,10 +30,10 @@ external makeInit: (
   ~referrer: string=?,
   ~integrity: string=?,
   ~keepalive: bool=?,
-  ~signal: AbortSignal.t=?,
+  ~signal: Web__AbortSignal.t=?,
   unit,
 ) => initT = ""
 
-@val external make: string => Promise.t<Response.t> = "fetch"
-@val external makeWithInit: (string, ~init: initT) => Promise.t<Response.t> = "fetch"
-@val external makeWithRequest: Request.t => Promise.t<Response.t> = "fetch"
+@val external make: string => Promise.t<Web__Response.t> = "fetch"
+@val external makeWithInit: (string, ~init: initT) => Promise.t<Web__Response.t> = "fetch"
+@val external makeWithRequest: Web__Request.t => Promise.t<Web__Response.t> = "fetch"

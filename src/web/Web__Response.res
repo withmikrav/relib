@@ -1,23 +1,27 @@
-include Body.Impl({
+include Web__Body.Impl({
   type t
 })
 
-include FetchTypes
+open Web__FetchTypes
 
 type initT = {
-  headers: option<Headers.t>,
+  headers: option<Web__Headers.t>,
   status: option<int>,
   statusText: option<string>,
 }
 
 @obj
-external makeInit: (~headers: Headers.t=?, ~status: int=?, ~statusText: string=?, unit) => initT =
-  ""
+external makeInit: (
+  ~headers: Web__Headers.t=?,
+  ~status: int=?,
+  ~statusText: string=?,
+  unit,
+) => initT = ""
 
-@new external make: Body.t => t = "Response"
-@new external makeWithInit: (Body.t, ~init: initT) => t = "Response"
+@new external make: Web__Body.t => t = "Response"
+@new external makeWithInit: (Web__Body.t, ~init: initT) => t = "Response"
 
-@get external headers: t => Headers.t = "headers"
+@get external headers: t => Web__Headers.t = "headers"
 @get external ok: t => bool = "ok"
 @get external redirected: t => bool = "redirected"
 @get external status: t => int = "status"

@@ -16,7 +16,7 @@ type t
 @get external port: t => string = "port"
 @get external protocol: t => string = "protocol"
 @get external search: t => string = "search"
-@get external searchParams: t => URLSearchParams.t = "searchParams"
+@get external searchParams: t => Web__URLSearchParams.t = "searchParams"
 @get external username: t => string = "username"
 
 @set external setHash: (t, string) => unit = "hash"

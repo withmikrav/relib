@@ -3,7 +3,7 @@ module Impl = (
     type t
   },
 ) => {
-  include EventTarget.Impl({
+  include Web__EventTarget.Impl({
     type t
     type eventTypeT = [
       | #abort

@@ -8,7 +8,7 @@ module Impl = (
   @ocaml.doc("A simple getter used to expose a `ReadableStream` of the body contents.")
   @return(nullable)
   @get
-  external body: t => option<ReadableStream.t> = "body"
+  external body: t => option<Web__ReadableStream.t> = "body"
 
   @ocaml.doc("A `Boolean` that indicates whether the body has been read.") @get
   external bodyUsed: t => bool = "bodyUsed"
@@ -23,13 +23,13 @@ module Impl = (
     "Takes a `Response` stream and reads it to completion. It returns a promise that resolves with a `Blob`."
   )
   @send
-  external blob: (t, unit) => Promise.t<Blob.t> = "blob"
+  external blob: (t, unit) => Promise.t<Web__Blob.t> = "blob"
 
   @ocaml.doc(
     "Takes a `Response` stream and reads it to completion. It returns a promise that resolves with a `FormData` object."
   )
   @send
-  external formData: (t, unit) => Promise.t<FormData.t> = "formData"
+  external formData: (t, unit) => Promise.t<Web__FormData.t> = "formData"
 
   @ocaml.doc(
     "Takes a `Response` stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as `JSON`."
@@ -48,9 +48,9 @@ include Impl({
   type t
 })
 
-external fromBlob: Blob.t => t = "%identity"
+external fromBlob: Web__Blob.t => t = "%identity"
 external fromArrayBuffer: ArrayBuffer.t => t = "%identity"
-external fromFormData: FormData.t => t = "%identity"
-external fromURLSearchParams: URLSearchParams.t => t = "%identity"
+external fromFormData: Web__FormData.t => t = "%identity"
+external fromURLSearchParams: Web__URLSearchParams.t => t = "%identity"
 external fromString: string => t = "%identity"
-external fromReadableStream: ReadableStream.t => t = "%identity"
+external fromReadableStream: Web__ReadableStream.t => t = "%identity"

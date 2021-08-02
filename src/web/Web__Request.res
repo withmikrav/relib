@@ -1,13 +1,13 @@
-include Body.Impl({
+include Web__Body.Impl({
   type t
 })
 
-include FetchTypes
+open Web__FetchTypes
 
 type initT = {
   method: option<methodT>,
-  headers: option<Headers.t>,
-  body: option<Body.t>,
+  headers: option<Web__Headers.t>,
+  body: option<Web__Body.t>,
   mode: option<modeT>,
   credentials: option<credentialsT>,
   cache: option<cacheT>,
@@ -19,8 +19,8 @@ type initT = {
 @obj
 external makeInit: (
   ~method: methodT=?,
-  ~headers: Headers.t=?,
-  ~body: Body.t=?,
+  ~headers: Web__Headers.t=?,
+  ~body: Web__Body.t=?,
   ~mode: modeT=?,
   ~credentials: credentialsT=?,
   ~cache: cacheT=?,
@@ -36,7 +36,7 @@ external makeInit: (
 @get external cache: t => cacheT = "cache"
 @get external credentials: t => credentialsT = "credentials"
 @get external destination: t => destinationT = "destination"
-@get external headers: t => Headers.t = "headers"
+@get external headers: t => Web__Headers.t = "headers"
 @get external integrity: t => string = "integrity"
 @get external method: t => methodT = "method"
 @get external mode: t => modeT = "mode"
