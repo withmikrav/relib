@@ -1,4 +1,5 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+type errorT
 
 module Impl = (
   T: {
@@ -36,15 +37,18 @@ module Impl = (
   let raiseError = (err: t) => {
     raise(err->toJsExn)
   }
+
+  @ocaml.doc("Convert into Error.t")
+  external toError: t => errorT = "%identity"
 }
 
 include Impl({
-  type t
+  type t = errorT
   let errorName = "Error"
 })
 
 @new
-external make: unit => t = "Error"
+external make: unit => errorT = "Error"
 
 @new
-external makeWithMessage: (~message: string) => t = "Error"
+external makeWithMessage: (~message: string) => errorT = "Error"
